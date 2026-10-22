@@ -40,7 +40,7 @@
             border-radius: 16px; padding: 20px; text-align: center; cursor: pointer;
             transition: all 0.2s ease; color: var(--text-color); font-size: 1rem;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            outline: none; width: 100%;
+            outline: none; width: 100%; -webkit-appearance: none;
         }
         .zodiac-card:active { background: var(--card-hover); transform: scale(0.97); }
         .zodiac-icon { font-size: 2.5rem; margin-bottom: 10px; display: block; pointer-events: none; }
@@ -83,18 +83,42 @@
     <p class="subtitle">Выберите ваш знак зодиака, чтобы узнать предсказание</p>
 
     <div class="zodiac-grid">
-        <button type="button" class="zodiac-card" onclick="showHoroscope('aries', 'Овен', '♈')"><span class="zodiac-icon">♈</span><span class="zodiac-name">Овен</span></button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('taurus', 'Телец', '♉')"><span class="zodiac-icon">♉</span><span class="zodiac-name">Телец</span></button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('gemini', 'Близнецы', '♊')"><span class="zodiac-icon">♊</span><span class="zodiac-name">Близнецы</span></button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('cancer', 'Рак', '♋')"><span class="zodiac-icon">♋</span><span class="zodiac-name">Рак</span></button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('leo', 'Лев', '♌')"><span class="zodiac-icon">♌</span><span class="zodiac-name">Лев</span></button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('virgo', 'Дева', '♍')"><span class="zodiac-icon">♍</span><span class="zodiac-name">Дева</span></button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('libra', 'Весы', '♎')"><span class="zodiac-icon">♎</span><span class="zodiac-name">Весы</span></button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('scorpio', 'Скорпион', '♏')"><span class="zodiac-icon">♏</span><span class="zodiac-name">Скорпион</span></button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('sagittarius', 'Стрелец', '♐')"><span class="zodiac-icon">♐</span><span class="zodiac-name">Стрелец</span></button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('capricorn', 'Козерог', '♑')"><span class="zodiac-icon">♑</span><span class="zodiac-name">Козерог</span></button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('aquarius', 'Водолей', '♒')"><span class="zodiac-icon">♒</span><span class="zodiac-name">Водолей</span></button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('pisces', 'Рыбы', '♓')"><span class="zodiac-icon">♓</span><span class="zodiac-name">Рыбы</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('aries', 'Овен', '♈')" ontouchstart="showHoroscope('aries', 'Овен', '♈')">
+            <span class="zodiac-icon">♈</span><span class="zodiac-name">Овен</span>
+        </button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('taurus', 'Телец', '♉')" ontouchstart="showHoroscope('taurus', 'Телец', '♉')">
+            <span class="zodiac-icon">♉</span><span class="zodiac-name">Телец</span>
+        </button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('gemini', 'Близнецы', '♊')" ontouchstart="showHoroscope('gemini', 'Близнецы', '♊')">
+            <span class="zodiac-icon">♊</span><span class="zodiac-name">Близнецы</span>
+        </button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('cancer', 'Рак', '♋')" ontouchstart="showHoroscope('cancer', 'Рак', '♋')">
+            <span class="zodiac-icon">♋</span><span class="zodiac-name">Рак</span>
+        </button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('leo', 'Лев', '♌')" ontouchstart="showHoroscope('leo', 'Лев', '♌')">
+            <span class="zodiac-icon">♌</span><span class="zodiac-name">Лев</span>
+        </button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('virgo', 'Дева', '♍')" ontouchstart="showHoroscope('virgo', 'Дева', '♍')">
+            <span class="zodiac-icon">♍</span><span class="zodiac-name">Дева</span>
+        </button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('libra', 'Весы', '♎')" ontouchstart="showHoroscope('libra', 'Весы', '♎')">
+            <span class="zodiac-icon">♎</span><span class="zodiac-name">Весы</span>
+        </button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('scorpio', 'Скорпион', '♏')" ontouchstart="showHoroscope('scorpio', 'Скорпион', '♏')">
+            <span class="zodiac-icon">♏</span><span class="zodiac-name">Скорпион</span>
+        </button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('sagittarius', 'Стрелец', '♐')" ontouchstart="showHoroscope('sagittarius', 'Стрелец', '♐')">
+            <span class="zodiac-icon">♐</span><span class="zodiac-name">Стрелец</span>
+        </button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('capricorn', 'Козерог', '♑')" ontouchstart="showHoroscope('capricorn', 'Козерог', '♑')">
+            <span class="zodiac-icon">♑</span><span class="zodiac-name">Козерог</span>
+        </button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('aquarius', 'Водолей', '♒')" ontouchstart="showHoroscope('aquarius', 'Водолей', '♒')">
+            <span class="zodiac-icon">♒</span><span class="zodiac-name">Водолей</span>
+        </button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('pisces', 'Рыбы', '♓')" ontouchstart="showHoroscope('pisces', 'Рыбы', '♓')">
+            <span class="zodiac-icon">♓</span><span class="zodiac-name">Рыбы</span>
+        </button>
     </div>
 
     <div class="modal" id="predictionModal">
@@ -102,7 +126,7 @@
             <div class="modal-icon" id="modalIcon"></div>
             <div class="modal-title" id="modalTitle"></div>
             <div class="modal-prediction" id="modalPrediction"></div>
-            <button class="close-btn" id="closeBtn">Принять совет звёзд</button>
+            <button type="button" class="close-btn" id="closeBtn">Принять совет звёзд</button>
         </div>
     </div>
 
@@ -111,7 +135,7 @@
     </div>
 
     <script>
-        const predictions = [
+        var predictions = [
             "1. День идеален для важного шага. Ошибок не будет.",
             "2. Энергия дня требует тишины и покоя. Отдохните.",
             "3. Финансовые потоки растут. Ждите новостей.",
@@ -140,24 +164,3 @@
             "26. Ожидайте искренний комплимент от незнакомца.",
             "27. День принесет баланс. Все тревоги отступят.",
             "28. Прошлое напомнит о себе. Шанс исправить ошибку.",
-            "29. Проведите вечер дома в атмосфере уюта.",
-            "30. Ваше упорство наконец даст первые крупные плоды.",
-            "31. Говорите «нет» без стыда. Защищайте свои границы."
-        ];
-
-        function getPredictionIndex(signId) {
-            const t = new Date();
-            let salt = 0;
-            for (let i = 0; i < signId.length; i++) { salt += signId.charCodeAt(i); }
-            const baseHash = (t.getFullYear() * 365) + ((t.getMonth() + 1) * 31) + t.getDate() + salt;
-            return Math.abs(baseHash) % predictions.length;
-        }
-
-        function showHoroscope(id, name, icon) {
-            const idx = getPredictionIndex(id);
-            document.getElementById('modalIcon').innerText = icon;
-            document.getElementById('modalTitle').innerText = name;
-            document.getElementById('modalPrediction').innerText = predictions[idx];
-            document.getElementById('predictionModal').classList.add('active');
-        }
-
