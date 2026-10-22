@@ -66,19 +66,20 @@
     <h1>Звёздный Оракул</h1>
     <p class="subtitle">Выберите ваш знак зодиака, чтобы узнать предсказание</p>
 
+    <!-- Прямая, неубиваемая передача параметров без скрытых JS-выборок -->
     <div class="zodiac-grid">
-        <button type="button" class="zodiac-card" data-sign="aries" data-name="Овен" data-icon="♈"><span class="zodiac-icon">♈</span><span class="zodiac-name">Овен</span></button>
-        <button type="button" class="zodiac-card" data-sign="taurus" data-name="Телец" data-icon="♉"><span class="zodiac-icon">♉</span><span class="zodiac-name">Телец</span></button>
-        <button type="button" class="zodiac-card" data-sign="gemini" data-name="Близнецы" data-icon="♊"><span class="zodiac-icon">♊</span><span class="zodiac-name">Близнецы</span></button>
-        <button type="button" class="zodiac-card" data-sign="cancer" data-name="Рак" data-icon="♋"><span class="zodiac-icon">♋</span><span class="zodiac-name">Рак</span></button>
-        <button type="button" class="zodiac-card" data-sign="leo" data-name="Лев" data-icon="♌"><span class="zodiac-icon">♌</span><span class="zodiac-name">Лев</span></button>
-        <button type="button" class="zodiac-card" data-sign="virgo" data-name="Дева" data-icon="♍"><span class="zodiac-icon">♍</span><span class="zodiac-name">Дева</span></button>
-        <button type="button" class="zodiac-card" data-sign="libra" data-name="Весы" data-icon="♎"><span class="zodiac-icon">♎</span><span class="zodiac-name">Весы</span></button>
-        <button type="button" class="zodiac-card" data-sign="scorpio" data-name="Скорпион" data-icon="♏"><span class="zodiac-icon">♏</span><span class="zodiac-name">Скорпион</span></button>
-        <button type="button" class="zodiac-card" data-sign="sagittarius" data-name="Стрелец" data-icon="♐"><span class="zodiac-icon">♐</span><span class="zodiac-name">Стрелец</span></button>
-        <button type="button" class="zodiac-card" data-sign="capricorn" data-name="Козерог" data-icon="♑"><span class="zodiac-icon">♑</span><span class="zodiac-name">Козерог</span></button>
-        <button type="button" class="zodiac-card" data-sign="aquarius" data-name="Водолей" data-icon="♒"><span class="zodiac-icon">♒</span><span class="zodiac-name">Водолей</span></button>
-        <button type="button" class="zodiac-card" data-sign="pisces" data-name="Рыбы" data-icon="♓"><span class="zodiac-icon">♓</span><span class="zodiac-name">Рыбы</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope(0, 'Овен', '♈')"><span class="zodiac-icon">♈</span><span class="zodiac-name">Овен</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope(3, 'Телец', '♉')"><span class="zodiac-icon">♉</span><span class="zodiac-name">Телец</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope(6, 'Близнецы', '♊')"><span class="zodiac-icon">♊</span><span class="zodiac-name">Близнецы</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope(9, 'Рак', '♋')"><span class="zodiac-icon">♋</span><span class="zodiac-name">Рак</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope(12, 'Лев', '♌')"><span class="zodiac-icon">♌</span><span class="zodiac-name">Лев</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope(15, 'Дева', '♍')"><span class="zodiac-icon">♍</span><span class="zodiac-name">Дева</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope(18, 'Весы', '♎')"><span class="zodiac-icon">♎</span><span class="zodiac-name">Весы</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope(21, 'Скорпион', '♏')"><span class="zodiac-icon">♏</span><span class="zodiac-name">Скорпион</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope(24, 'Стрелец', '♐')"><span class="zodiac-icon">♐</span><span class="zodiac-name">Стрелец</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope(27, 'Козерог', '♑')"><span class="zodiac-icon">♑</span><span class="zodiac-name">Козерог</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope(1, 'Водолей', '♒')"><span class="zodiac-icon">♒</span><span class="zodiac-name">Водолей</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope(4, 'Рыбы', '♓')"><span class="zodiac-icon">♓</span><span class="zodiac-name">Рыбы</span></button>
     </div>
 
     <div class="modal" id="predictionModal">
@@ -86,7 +87,7 @@
             <div class="modal-icon" id="modalIcon"></div>
             <div class="modal-title" id="modalTitle"></div>
             <div class="modal-prediction" id="modalPrediction"></div>
-            <button type="button" class="close-btn" id="closeBtn">Принять совет звёзд</button>
+            <button type="button" class="close-btn" onclick="closeModalWindow()">Принять совет звёзд</button>
         </div>
     </div>
 
@@ -126,22 +127,15 @@
             "Прошлое напомнит о себе. Шанс исправить ошибку.",
             "Проведите вечер дома в атмосфере уюта.",
             "Ваше упорство наконец даст первые крупные плоды.",
-            "Говорите «нет» без стыда. Защищайте свои границы.",
-            "Звёзды обещают стабильность в делах. Не переживайте.",
-            "Благоприятное время для душевных разговоров."
+            "Говорите «нет» без стыда. Защищайте свои границы."
         ];
-
-        var shifts = {
-            aries: 0, taurus: 3, gemini: 6, cancer: 9, leo: 12, virgo: 15,
-            libra: 18, scorpio: 21, sagittarius: 24, capricorn: 27, aquarius: 1, pisces: 4
-        };
 
         var modal = document.getElementById('predictionModal');
 
-        function showHoroscope(id, name, icon) {
-            var now = new Date();
-            var totalDays = Math.floor(now.getTime() / (1000 * 60 * 60 * 24));
-            var idx = (totalDays + shifts[id]) % predictions.length;
+        function showHoroscope(shiftValue, name, icon) {
+            // Подсчет абсолютных дней с 1970 года
+            var totalDays = Math.floor(Date.now() / 86400000);
+            var idx = (totalDays + shiftValue) % predictions.length;
 
             document.getElementById('modalIcon').innerText = icon;
             document.getElementById('modalTitle').innerText = name;
@@ -153,13 +147,9 @@
             modal.style.display = 'none';
         }
 
-        var cards = document.querySelectorAll('.zodiac-grid button');
-        for (var j = 0; j < cards.length; j++) {
-            cards[j].onclick = function(e) {
-                var id = this.getAttribute('data-sign');
-                var name = this.getAttribute('data-name');
-                var icon = this.getAttribute('data-icon');
-                showHoroscope(id, name, icon);
-            };
-        }
-
+        modal.onclick = function(e) { 
+            if (e.target === modal) closeModalWindow(); 
+        };
+    </script>
+</body>
+</html>
