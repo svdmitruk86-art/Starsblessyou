@@ -48,9 +48,7 @@
         
         .modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(5, 5, 15, 0.95);
-            display: none;
-            align-items: center; justify-content: center;
+            background: rgba(5, 5, 15, 0.95); display: none; align-items: center; justify-content: center;
             z-index: 1000; padding: 20px;
         }
         .modal-content {
@@ -81,43 +79,20 @@
     <h1>Звёздный Оракул</h1>
     <p class="subtitle">Выберите ваш знак зодиака, чтобы узнать предсказание</p>
 
+    <!-- HTML очищен от инлайнового JS -->
     <div class="zodiac-grid">
-        <button type="button" class="zodiac-card" onclick="showHoroscope('aries', 'Овен', '♈')">
-            <span class="zodiac-icon">♈</span><span class="zodiac-name">Овен</span>
-        </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('taurus', 'Телец', '♉')">
-            <span class="zodiac-icon">♉</span><span class="zodiac-name">Телец</span>
-        </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('gemini', 'Близнецы', '♊')">
-            <span class="zodiac-icon">♊</span><span class="zodiac-name">Близнецы</span>
-        </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('cancer', 'Рак', '♋')">
-            <span class="zodiac-icon">♋</span><span class="zodiac-name">Рак</span>
-        </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('leo', 'Лев', '♌')">
-            <span class="zodiac-icon">♌</span><span class="zodiac-name">Лев</span>
-        </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('virgo', 'Дева', '♍')">
-            <span class="zodiac-icon">♍</span><span class="zodiac-name">Дева</span>
-        </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('libra', 'Весы', '♎')">
-            <span class="zodiac-icon">♎</span><span class="zodiac-name">Весы</span>
-        </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('scorpio', 'Скорпион', '♏')">
-            <span class="zodiac-icon">♏</span><span class="zodiac-name">Скорпион</span>
-        </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('sagittarius', 'Стрелец', '♐')">
-            <span class="zodiac-icon">♐</span><span class="zodiac-name">Стрелец</span>
-        </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('capricorn', 'Козерог', '♑')">
-            <span class="zodiac-icon">♑</span><span class="zodiac-name">Козерог</span>
-        </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('aquarius', 'Водолей', '♒')">
-            <span class="zodiac-icon">♒</span><span class="zodiac-name">Водолей</span>
-        </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('pisces', 'Рыбы', '♓')">
-            <span class="zodiac-icon">♓</span><span class="zodiac-name">Рыбы</span>
-        </button>
+        <button type="button" class="zodiac-card" data-sign="aries" data-name="Овен" data-icon="♈"><span class="zodiac-icon">♈</span><span class="zodiac-name">Овен</span></button>
+        <button type="button" class="zodiac-card" data-sign="taurus" data-name="Телец" data-icon="♉"><span class="zodiac-icon">♉</span><span class="zodiac-name">Телец</span></button>
+        <button type="button" class="zodiac-card" data-sign="gemini" data-name="Близнецы" data-icon="♊"><span class="zodiac-icon">♊</span><span class="zodiac-name">Близнецы</span></button>
+        <button type="button" class="zodiac-card" data-sign="cancer" data-name="Рак" data-icon="♋"><span class="zodiac-icon">♋</span><span class="zodiac-name">Рак</span></button>
+        <button type="button" class="zodiac-card" data-sign="leo" data-name="Лев" data-icon="♌"><span class="zodiac-icon">♌</span><span class="zodiac-name">Лев</span></button>
+        <button type="button" class="zodiac-card" data-sign="virgo" data-name="Дева" data-icon="♍"><span class="zodiac-icon">♍</span><span class="zodiac-name">Дева</span></button>
+        <button type="button" class="zodiac-card" data-sign="libra" data-name="Весы" data-icon="♎"><span class="zodiac-icon">♎</span><span class="zodiac-name">Весы</span></button>
+        <button type="button" class="zodiac-card" data-sign="scorpio" data-name="Скорпион" data-icon="♏"><span class="zodiac-icon">♏</span><span class="zodiac-name">Скорпион</span></button>
+        <button type="button" class="zodiac-card" data-sign="sagittarius" data-name="Стрелец" data-icon="♐"><span class="zodiac-icon">♐</span><span class="zodiac-name">Стрелец</span></button>
+        <button type="button" class="zodiac-card" data-sign="capricorn" data-name="Козерог" data-icon="♑"><span class="zodiac-icon">♑</span><span class="zodiac-name">Козерог</span></button>
+        <button type="button" class="zodiac-card" data-sign="aquarius" data-name="Водолей" data-icon="♒"><span class="zodiac-icon">♒</span><span class="zodiac-name">Водолей</span></button>
+        <button type="button" class="zodiac-card" data-sign="pisces" data-name="Рыбы" data-icon="♓"><span class="zodiac-icon">♓</span><span class="zodiac-name">Рыбы</span></button>
     </div>
 
     <div class="modal" id="predictionModal">
@@ -125,7 +100,7 @@
             <div class="modal-icon" id="modalIcon"></div>
             <div class="modal-title" id="modalTitle"></div>
             <div class="modal-prediction" id="modalPrediction"></div>
-            <button type="button" class="close-btn" onclick="closeModalWindow()">Принять совет звёзд</button>
+            <button type="button" class="close-btn" id="closeBtn">Принять совет звёзд</button>
         </div>
     </div>
 
@@ -135,56 +110,60 @@
 
     <script>
         var predictions = [
-            "День идеален для важного шага. Ошибок не будет.",
-            "Энергия дня требует тишины и покоя. Отдохните.",
-            "Финансовые потоки растут. Ждите новостей.",
-            "Откажитесь от спешки. Все придет вовремя.",
-            "Интуиция обострена. Доверяйте первому импульсу.",
-            "Время убрать лишнее из жизни и отпустить обиды.",
-            "Ждите неожиданную встречу, которая изменит планы.",
-            "Полноценный отдых сегодня вернет вам силы.",
-            "Кто-то тайно ищет вашего внимания. Оглянитесь.",
-            "Удача в переговорах. Все сложится в вашу пользу.",
-            "День творчества. Запишите все новые задумки.",
-            "Фокусируйтесь на главном. Мелкие неурядицы рассеются сами.",
-            "Ваше обаяние на пике. Открываются новые двери.",
-            "Осторожнее с обещаниями, берегите личную энергию.",
-            "Обращайте внимание на знаки и мелкие совпадения.",
-            "Благоприятный день для учебы и сбора информации.",
-            "Не бойтесь просить о помощи близких людей.",
-            "Романтика витает в воздухе. Вечер будет тёплым.",
-            "Удачный момент для планирования крупных покупок.",
-            "Внутренний компас указывает верный путь.",
-            "Избегайте споров. Ваше спокойствие важнее всего.",
-            "Старая проблема решится самым легким способом.",
-            "Выйдите из зоны комфорта — риск себя оправдает.",
-            "Замедлитесь и просто насладитесь текущим моментом.",
-            "Удача ждет в цифровых делах и онлайн-проектах.",
-            "Ожидайте искренний комплимент от незнакомца.",
-            "День принесет баланс. Все тревоги отступят.",
-            "Прошлое напомнит о себе. Шанс исправить ошибку.",
-            "Проведите вечер дома в атмосфере уюта.",
-            "Ваше упорство наконец даст первые крупные плоды.",
-            "Говорите «нет» без стыда. Защищайте свои границы."
+            "1. День идеален для важного шага. Ошибок не будет.",
+            "2. Энергия дня требует тишины и покоя. Отдохните.",
+            "3. Финансовые потоки растут. Ждите новостей.",
+            "4. Откажитесь от спешки. Все придет вовремя.",
+            "5. Интуиция обострена. Доверяйте первому импульсу.",
+            "6. Время убрать лишнее из жизни и отпустить обиды.",
+            "7. Ждите неожиданную встречу, которая изменит планы.",
+            "8. Полноценный отдых сегодня вернет вам силы.",
+            "9. Кто-то тайно ищет вашего внимания. Оглянитесь.",
+            "10. Удача в переговорах. Все сложится в вашу пользу.",
+            "11. День творчества. Запишите все новые задумки.",
+            "12. Фокусируйтесь на главном. Мелкие неурядицы рассеются сами.",
+            "13. Ваше обаяние на пике. Открываются новые двери.",
+            "14. Осторожнее с обещаниями, берегите личную энергию.",
+            "15. Обращайте внимание на знаки и мелкие совпадения.",
+            "16. Благоприятный день для учебы и сбора информации.",
+            "17. Не бойтесь просить о помощи близких людей.",
+            "18. Романтика витает в воздухе. Вечер будет тёплым.",
+            "19. Удачный момент для планирования крупных покупок.",
+            "20. Внутренний компас указывает верный путь.",
+            "21. Избегайте споров. Ваше спокойствие важнее всего.",
+            "22. Старая проблема решится самым легким способом.",
+            "23. Выйдите из зоны комфорта — риск себя оправдает.",
+            "24. Замедлитесь и просто насладитесь текущим моментом.",
+            "25. Удача ждет в цифровых делах и онлайн-проектах.",
+            "26. Ожидайте искренний комплимент от незнакомца.",
+            "27. День принесет баланс. Все тревоги отступят.",
+            "28. Прошлое напомнит о себе. Шанс исправить ошибку.",
+            "29. Проведите вечер дома в атмосфере уюта.",
+            "30. Ваше упорство наконец даст первые крупные плоды.",
+            "31. Говорите «нет» без стыда. Защищайте свои границы."
         ];
 
-        // Хэш-алгоритм DJB2: теперь знаки гарантированно не перемешиваются
-        function getPredictionIndex(signId) {
-            var d = new Date();
-            var dateStr = d.getFullYear().toString() + (d.getMonth() + 1).toString() + d.getDate().toString() + signId;
-            var hash = 5381;
-            for (var i = 0; i < dateStr.length; i++) {
-                hash = ((hash << 5) + hash) + dateStr.charCodeAt(i);
-            }
-            return Math.abs(hash) % predictions.length;
-        }
+        // Персональные сдвиги, чтобы знаки не пересекались в один день
+        var shifts = {
+            aries: 0, taurus: 3, gemini: 6, cancer: 9, leo: 12, virgo: 15,
+            libra: 18, scorpio: 21, sagittarius: 24, capricorn: 27, aquarius: 1, pisces: 4
+        };
 
+        var modal = document.getElementById('predictionModal');
+
+        // Новая неубиваемая логика подсчета по дням Unix (решает проблему смены года)
         function showHoroscope(id, name, icon) {
-            var idx = getPredictionIndex(id);
+            var now = new Date();
+            // Считаем количество полных дней, прошедших с 1 января 1970 года
+            var totalDays = Math.floor(now.getTime() / (1000 * 60 * 60 * 24));
+            
+            // Рассчитываем уникальный индекс
+            var idx = (totalDays + shifts[id]) % predictions.length;
+
             document.getElementById('modalIcon').innerText = icon;
             document.getElementById('modalTitle').innerText = name;
             document.getElementById('modalPrediction').innerText = predictions[idx];
-            document.getElementById('predictionModal').style.display = 'flex';
+            modal.style.display = 'flex';
         }
 
         function closeModalWindow() {
