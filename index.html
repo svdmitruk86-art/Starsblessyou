@@ -16,13 +16,8 @@
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px 20px 100px 20px;
+            background-color: var(--bg-color); color: var(--text-color); min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center; padding: 20px 20px 100px 20px;
             background-image: radial-gradient(circle at 50% 50%, #161638 0%, #0b0b1e 100%);
         }
         h1 {
@@ -39,8 +34,7 @@
             background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px; padding: 20px; text-align: center; cursor: pointer;
             transition: background 0.1s ease; color: var(--text-color); font-size: 1rem;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            outline: none; width: 100%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; outline: none; width: 100%;
         }
         .zodiac-card:active { background: var(--card-hover); }
         .zodiac-icon { font-size: 2.5rem; margin-bottom: 10px; display: block; pointer-events: none; }
@@ -48,29 +42,22 @@
         
         .modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(5, 5, 15, 0.95); display: none; align-items: center; justify-content: center;
-            z-index: 1000; padding: 20px;
+            background: rgba(5, 5, 15, 0.95); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 20px;
         }
         .modal-content {
-            background: #161630; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 24px;
-            padding: 30px; max-width: 500px; width: 100%; text-align: center;
+            background: #161630; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 24px; padding: 30px; max-width: 500px; width: 100%; text-align: center;
         }
         .modal-icon { font-size: 3.5rem; margin-bottom: 15px; }
         .modal-title { font-size: 1.8rem; margin-bottom: 15px; color: var(--accent-color); }
         .modal-prediction { font-size: 1.1rem; line-height: 1.6; opacity: 0.9; margin-bottom: 25px; }
         .close-btn {
-            background: var(--accent-color); color: #fff; border: none; padding: 12px 30px;
-            font-size: 1rem; font-weight: 600; border-radius: 12px; cursor: pointer; width: 100%; outline: none;
+            background: var(--accent-color); color: #fff; border: none; padding: 12px 30px; font-size: 1rem; font-weight: 600; border-radius: 12px; cursor: pointer; width: 100%; outline: none;
         }
         .footer-panel {
-            position: fixed; bottom: 0; left: 0; width: 100%; padding: 15px;
-            background: rgba(11, 11, 30, 0.95); border-top: 1px solid rgba(255, 255, 255, 0.1); 
-            display: flex; justify-content: center; z-index: 900;
+            position: fixed; bottom: 0; left: 0; width: 100%; padding: 15px; background: rgba(11, 11, 30, 0.95); border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: center; z-index: 900;
         }
         .donate-btn {
-            background: var(--donate-color); color: #fff; border: none; padding: 12px 24px;
-            font-size: 1rem; font-weight: bold; border-radius: 50px; cursor: pointer; text-decoration: none;
-            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--donate-color); color: #fff; border: none; padding: 12px 24px; font-size: 1rem; font-weight: bold; border-radius: 50px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
         }
     </style>
 </head>
@@ -79,7 +66,6 @@
     <h1>Звёздный Оракул</h1>
     <p class="subtitle">Выберите ваш знак зодиака, чтобы узнать предсказание</p>
 
-    <!-- HTML очищен от инлайнового JS -->
     <div class="zodiac-grid">
         <button type="button" class="zodiac-card" data-sign="aries" data-name="Овен" data-icon="♈"><span class="zodiac-icon">♈</span><span class="zodiac-name">Овен</span></button>
         <button type="button" class="zodiac-card" data-sign="taurus" data-name="Телец" data-icon="♉"><span class="zodiac-icon">♉</span><span class="zodiac-name">Телец</span></button>
@@ -110,40 +96,41 @@
 
     <script>
         var predictions = [
-            "1. День идеален для важного шага. Ошибок не будет.",
-            "2. Энергия дня требует тишины и покоя. Отдохните.",
-            "3. Финансовые потоки растут. Ждите новостей.",
-            "4. Откажитесь от спешки. Все придет вовремя.",
-            "5. Интуиция обострена. Доверяйте первому импульсу.",
-            "6. Время убрать лишнее из жизни и отпустить обиды.",
-            "7. Ждите неожиданную встречу, которая изменит планы.",
-            "8. Полноценный отдых сегодня вернет вам силы.",
-            "9. Кто-то тайно ищет вашего внимания. Оглянитесь.",
-            "10. Удача в переговорах. Все сложится в вашу пользу.",
-            "11. День творчества. Запишите все новые задумки.",
-            "12. Фокусируйтесь на главном. Мелкие неурядицы рассеются сами.",
-            "13. Ваше обаяние на пике. Открываются новые двери.",
-            "14. Осторожнее с обещаниями, берегите личную энергию.",
-            "15. Обращайте внимание на знаки и мелкие совпадения.",
-            "16. Благоприятный день для учебы и сбора информации.",
-            "17. Не бойтесь просить о помощи близких людей.",
-            "18. Романтика витает в воздухе. Вечер будет тёплым.",
-            "19. Удачный момент для планирования крупных покупок.",
-            "20. Внутренний компас указывает верный путь.",
-            "21. Избегайте споров. Ваше спокойствие важнее всего.",
-            "22. Старая проблема решится самым легким способом.",
-            "23. Выйдите из зоны комфорта — риск себя оправдает.",
-            "24. Замедлитесь и просто насладитесь текущим моментом.",
-            "25. Удача ждет в цифровых делах и онлайн-проектах.",
-            "26. Ожидайте искренний комплимент от незнакомца.",
-            "27. День принесет баланс. Все тревоги отступят.",
-            "28. Прошлое напомнит о себе. Шанс исправить ошибку.",
-            "29. Проведите вечер дома в атмосфере уюта.",
-            "30. Ваше упорство наконец даст первые крупные плоды.",
-            "31. Говорите «нет» без стыда. Защищайте свои границы."
+            "День идеален для важного шага. Ошибок не будет.",
+            "Энергия дня требует тишины и покоя. Отдохните.",
+            "Финансовые потоки растут. Ждите новостей.",
+            "Откажитесь от спешки. Все придет вовремя.",
+            "Интуиция обострена. Доверяйте первому импульсу.",
+            "Время убрать лишнее из жизни и отпустить обиды.",
+            "Ждите неожиданную встречу, которая изменит планы.",
+            "Полноценный отдых сегодня вернет вам силы.",
+            "Кто-то тайно ищет вашего внимания. Оглянитесь.",
+            "Удача в переговорах. Все сложится в вашу пользу.",
+            "День творчества. Запишите все новые задумки.",
+            "Фокусируйтесь на главном. Мелкие неурядицы рассеются сами.",
+            "Ваше обаяние на пике. Открываются новые двери.",
+            "Осторожнее с обещаниями, берегите личную энергию.",
+            "Обращайте внимание на знаки и мелкие совпадения.",
+            "Благоприятный день для учебы и сбора информации.",
+            "Не бойтесь просить о помощи близких людей.",
+            "Романтика витает в воздухе. Вечер будет тёплым.",
+            "Удачный момент для планирования крупных покупок.",
+            "Внутренний компас указывает верный путь.",
+            "Избегайте споров. Ваше спокойствие важнее всего.",
+            "Старая проблема решится самым легким способом.",
+            "Выйдите из зоны комфорта — риск себя оправдает.",
+            "Замедлитесь и просто насладитесь текущим моментом.",
+            "Удача ждет в цифровых делах и онлайн-проектах.",
+            "Ожидайте искренний комплимент от незнакомца.",
+            "День принесет баланс. Все тревоги отступят.",
+            "Прошлое напомнит о себе. Шанс исправить ошибку.",
+            "Проведите вечер дома в атмосфере уюта.",
+            "Ваше упорство наконец даст первые крупные плоды.",
+            "Говорите «нет» без стыда. Защищайте свои границы.",
+            "Звёзды обещают стабильность в делах. Не переживайте.",
+            "Благоприятное время для душевных разговоров."
         ];
 
-        // Персональные сдвиги, чтобы знаки не пересекались в один день
         var shifts = {
             aries: 0, taurus: 3, gemini: 6, cancer: 9, leo: 12, virgo: 15,
             libra: 18, scorpio: 21, sagittarius: 24, capricorn: 27, aquarius: 1, pisces: 4
@@ -151,13 +138,9 @@
 
         var modal = document.getElementById('predictionModal');
 
-        // Новая неубиваемая логика подсчета по дням Unix (решает проблему смены года)
         function showHoroscope(id, name, icon) {
             var now = new Date();
-            // Считаем количество полных дней, прошедших с 1 января 1970 года
             var totalDays = Math.floor(now.getTime() / (1000 * 60 * 60 * 24));
-            
-            // Рассчитываем уникальный индекс
             var idx = (totalDays + shifts[id]) % predictions.length;
 
             document.getElementById('modalIcon').innerText = icon;
@@ -167,3 +150,16 @@
         }
 
         function closeModalWindow() {
+            modal.style.display = 'none';
+        }
+
+        var cards = document.querySelectorAll('.zodiac-grid button');
+        for (var j = 0; j < cards.length; j++) {
+            cards[j].onclick = function(e) {
+                var id = this.getAttribute('data-sign');
+                var name = this.getAttribute('data-name');
+                var icon = this.getAttribute('data-icon');
+                showHoroscope(id, name, icon);
+            };
+        }
+
