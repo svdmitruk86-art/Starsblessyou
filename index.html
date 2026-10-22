@@ -11,214 +11,69 @@
             --card-hover: rgba(255, 255, 255, 0.12);
             --text-color: #ffffff;
             --accent-color: #7f5af0;
-            --accent-hover: #9370db;
             --donate-color: #2cb67d;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
-            padding-bottom: 100px;
+            padding: 20px 20px 100px 20px;
             background-image: radial-gradient(circle at 50% 50%, #161638 0%, #0b0b1e 100%);
         }
-
         h1 {
-            margin: 20px 0 10px 0;
-            font-size: 2.5rem;
-            text-align: center;
-            letter-spacing: 2px;
+            margin: 20px 0 10px 0; font-size: 2.5rem; text-align: center;
             background: linear-gradient(45deg, #ff8e53, #ff007f, #7f5af0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-
-        .subtitle {
-            font-size: 1rem;
-            opacity: 0.7;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
+        .subtitle { font-size: 1rem; opacity: 0.7; margin-bottom: 30px; text-align: center; }
         .zodiac-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-            width: 100%;
-            max-width: 800px;
-            padding: 10px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px; width: 100%; max-width: 800px; padding: 10px;
         }
-
         .zodiac-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            color: var(--text-color);
-            font-size: 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            outline: none;
-            width: 100%;
+            background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px; padding: 20px; text-align: center; cursor: pointer;
+            transition: all 0.2s ease; color: var(--text-color); font-size: 1rem;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            outline: none; width: 100%;
         }
-
-        @media (hover: hover) {
-            .zodiac-card:hover {
-                background: var(--card-hover);
-                transform: translateY(-3px);
-                border-color: var(--accent-color);
-                box-shadow: 0 10px 20px rgba(127, 90, 240, 0.2);
-            }
-        }
-
-        .zodiac-card:active {
-            background: var(--card-hover);
-            transform: scale(0.97);
-        }
-
-        .zodiac-icon {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            display: block;
-            pointer-events: none;
-        }
-
-        .zodiac-name {
-            font-weight: 600;
-            display: block;
-            pointer-events: none;
-        }
-
+        .zodiac-card:active { background: var(--card-hover); transform: scale(0.97); }
+        .zodiac-icon { font-size: 2.5rem; margin-bottom: 10px; display: block; pointer-events: none; }
+        .zodiac-name { font-weight: 600; display: block; pointer-events: none; }
         .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(5, 5, 15, 0.85);
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            z-index: 1000;
-            padding: 20px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 5, 15, 0.85); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 1000; padding: 20px;
         }
-
-        .modal.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
+        .modal.active { opacity: 1; pointer-events: auto; }
         .modal-content {
-            background: #161630;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 24px;
-            padding: 30px;
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
-            position: relative;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            background: #161630; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 24px;
+            padding: 30px; max-width: 500px; width: 100%; text-align: center;
+            transform: scale(0.9); transition: transform 0.3s ease; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
-
-        .modal.active .modal-content {
-            transform: scale(1);
-        }
-
-        .modal-icon {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-        }
-
-        .modal-title {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--accent-color);
-        }
-
-        .modal-prediction {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            opacity: 0.9;
-            margin-bottom: 25px;
-        }
-
+        .modal.active .modal-content { transform: scale(1); }
+        .modal-icon { font-size: 3.5rem; margin-bottom: 15px; }
+        .modal-title { font-size: 1.8rem; margin-bottom: 15px; color: var(--accent-color); }
+        .modal-prediction { font-size: 1.1rem; line-height: 1.6; opacity: 0.9; margin-bottom: 25px; }
         .close-btn {
-            background: var(--accent-color);
-            color: #fff;
-            border: none;
-            padding: 12px 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: background 0.2s;
-            width: 100%;
-            outline: none;
+            background: var(--accent-color); color: #fff; border: none; padding: 12px 30px;
+            font-size: 1rem; font-weight: 600; border-radius: 12px; cursor: pointer; width: 100%; outline: none;
         }
-
-        .close-btn:active {
-            background: var(--accent-hover);
-        }
-
         .footer-panel {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 15px;
-            background: rgba(11, 11, 30, 0.9);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: center;
-            z-index: 900;
+            position: fixed; bottom: 0; left: 0; width: 100%; padding: 15px;
+            background: rgba(11, 11, 30, 0.9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: center; z-index: 900;
         }
-
         .donate-btn {
-            background: var(--donate-color);
-            color: #fff;
-            border: none;
-            padding: 12px 24px;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(44, 182, 125, 0.3);
-            transition: transform 0.2s, background-color 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .donate-btn:active {
-            transform: scale(0.95);
-            background-color: #239666;
+            background: var(--donate-color); color: #fff; border: none; padding: 12px 24px;
+            font-size: 1rem; font-weight: bold; border-radius: 50px; cursor: pointer; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px;
         }
     </style>
 </head>
@@ -227,7 +82,20 @@
     <h1>Звёздный Оракул</h1>
     <p class="subtitle">Выберите ваш знак зодиака, чтобы узнать предсказание</p>
 
-    <div class="zodiac-grid" id="zodiacGrid"></div>
+    <div class="zodiac-grid">
+        <button type="button" class="zodiac-card" onclick="showHoroscope('aries', 'Овен', '♈')"><span class="zodiac-icon">♈</span><span class="zodiac-name">Овен</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('taurus', 'Телец', '♉')"><span class="zodiac-icon">♉</span><span class="zodiac-name">Телец</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('gemini', 'Близнецы', '♊')"><span class="zodiac-icon">♊</span><span class="zodiac-name">Близнецы</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('cancer', 'Рак', '♋')"><span class="zodiac-icon">♋</span><span class="zodiac-name">Рак</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('leo', 'Лев', '♌')"><span class="zodiac-icon">♌</span><span class="zodiac-name">Лев</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('virgo', 'Дева', '♍')"><span class="zodiac-icon">♍</span><span class="zodiac-name">Дева</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('libra', 'Весы', '♎')"><span class="zodiac-icon">♎</span><span class="zodiac-name">Весы</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('scorpio', 'Скорпион', '♏')"><span class="zodiac-icon">♏</span><span class="zodiac-name">Скорпион</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('sagittarius', 'Стрелец', '♐')"><span class="zodiac-icon">♐</span><span class="zodiac-name">Стрелец</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('capricorn', 'Козерог', '♑')"><span class="zodiac-icon">♑</span><span class="zodiac-name">Козерог</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('aquarius', 'Водолей', '♒')"><span class="zodiac-icon">♒</span><span class="zodiac-name">Водолей</span></button>
+        <button type="button" class="zodiac-card" onclick="showHoroscope('pisces', 'Рыбы', '♓')"><span class="zodiac-icon">♓</span><span class="zodiac-name">Рыбы</span></button>
+    </div>
 
     <div class="modal" id="predictionModal">
         <div class="modal-content">
@@ -239,48 +107,57 @@
     </div>
 
     <div class="footer-panel">
-        <a href="#" target="_blank" class="donate-btn">
-            <span>🌟 Донат звездочёту</span>
-        </a>
+        <a href="#" target="_blank" class="donate-btn"><span>🌟 Донат звездочёту</span></a>
     </div>
 
     <script>
-        const zodiacSigns = [
-            { id: 'aries', name: 'Овен', icon: '♈' },
-            { id: 'taurus', name: 'Телец', icon: '♉' },
-            { id: 'gemini', name: 'Близнецы', icon: '♊' },
-            { id: 'cancer', name: 'Рак', icon: '♋' },
-            { id: 'leo', name: 'Лев', icon: '♌' },
-            { id: 'virgo', name: 'Дева', icon: '♍' },
-            { id: 'libra', name: 'Весы', icon: '♎' },
-            { id: 'scorpio', name: 'Скорпион', icon: '♏' },
-            { id: 'sagittarius', name: 'Стрелец', icon: '♐' },
-            { id: 'capricorn', name: 'Козерог', icon: '♑' },
-            { id: 'aquarius', name: 'Водолей', icon: '♒' },
-            { id: 'pisces', name: 'Рыбы', icon: '♓' }
+        const predictions = [
+            "1. День идеален для важного шага. Ошибок не будет.",
+            "2. Энергия дня требует тишины и покоя. Отдохните.",
+            "3. Финансовые потоки растут. Ждите новостей.",
+            "4. Откажитесь от спешки. Все придет вовремя.",
+            "5. Интуиция обострена. Доверяйте первому импульсу.",
+            "6. Время убрать лишнее из жизни и отпустить обиды.",
+            "7. Ждите неожиданную встречу, которая изменит планы.",
+            "8. Полноценный отдых сегодня вернет вам силы.",
+            "9. Кто-то тайно ищет вашего внимания. Оглянитесь.",
+            "10. Удача в переговорах. Все сложится в вашу пользу.",
+            "11. День творчества. Запишите все новые задумки.",
+            "12. Фокусируйтесь на главном. Мелочи решатся сами.",
+            "13. Ваше обаяние на пике. Открываются новые двери.",
+            "14. Осторожнее с обещаниями, берегите личную энергию.",
+            "15. Обращайте внимание на знаки и мелкие совпадения.",
+            "16. Благоприятный день для учебы и сбора информации.",
+            "17. Не бойтесь просить о помощи близких людей.",
+            "18. Романтика витает в воздухе. Вечер будет тёплым.",
+            "19. Удачный момент для планирования крупных покупок.",
+            "20. Внутренний компас указывает верный путь.",
+            "21. Избегайте споров. Ваше спокойствие важнее всего.",
+            "22. Старая проблема решится самым легким способом.",
+            "23. Выйдите из зоны комфорта — риск себя оправдает.",
+            "24. Замедлитесь и просто насладитесь текущим моментом.",
+            "25. Удача ждет в цифровых делах и онлайн-проектах.",
+            "26. Ожидайте искренний комплимент от незнакомца.",
+            "27. День принесет баланс. Все тревоги отступят.",
+            "28. Прошлое напомнит о себе. Шанс исправить ошибку.",
+            "29. Проведите вечер дома в атмосфере уюта.",
+            "30. Ваше упорство наконец даст первые крупные плоды.",
+            "31. Говорите «нет» без стыда. Защищайте свои границы."
         ];
 
-        const predictions = [
-            "Сегодня идеальный день для решительного шага. Звёзды защищают вас от ошибок.",
-            "Энергия дня требует тишины. Побудьте наедине со своими мыслями — придёт гениальный ответ.",
-            "Финансовые потоки активизируются. Ожидайте приятных новостей или предложений.",
-            "Откажитесь от спешки. То, что ваше, придёт к вам вовремя и без лишних усилий.",
-            "Ваша интуиция сегодня обострена до предела. Доверяйте первому импульсу.",
-            "Прекрасное время для генеральной уборки в жизни — избавьтесь от старых вещей и обид.",
-            "Вам предстоит неожиданная встреча, которая способна изменить планы на ближайшую неделю.",
-            "Уделите время своему телу. Полноценный отдых вернет вам колоссальный объем сил.",
-            "Сегодня кто-то тайно ищет вашего внимания. Присмотритесь к окружению.",
-            "Звёзды сулят удачу в переговорах. Любые компромиссы сегодня сложатся в вашу пользу.",
-            "День наполнен творческой энергией. Запишите все идеи, даже самые безумные.",
-            "Фокусируйтесь на главном. Мелкие неурядицы рассеются сами собой к вечеру.",
-            "Ваше обаяние сегодня на максимуме. Открываются двери, которые раньше были заперты.",
-            "Будьте осторожны с обещаниями. Пообещав лишнее, рискуете потратить кучу энергии.",
-            "Сегодня Вселенная пошлёт вам чёткий знак. Обращайте внимание на повторяющиеся цифры.",
-            "Благоприятный день для получения новых знаний. Мозг впитывает информацию как губка.",
-            "Не бойтесь просить о помощи. Близкие люди готовы оказать вам мощную поддержку.",
-            "Романтические флюиды витают в воздухе. Вечер обещает быть тёплым и запоминающимся.",
-            "Удачный момент для крупных покупок или планирования больших инвестиций.",
-            "Ваш внутренний компас указывает верное направление. Смело двигайтесь вперёд.",
-            "Избегайте токсичных споров. Ваша энергия слишком ценна, чтобы тратить её на пустяки.",
-            "Сегодня старая проблема решится самым неожиданным и лёгким для вас способом.",
-            "Пора выйти из зоны комфорта. Маленький риск принесёт колоссальные дивиденды.",
+        function getPredictionIndex(signId) {
+            const t = new Date();
+            let salt = 0;
+            for (let i = 0; i < signId.length; i++) { salt += signId.charCodeAt(i); }
+            const baseHash = (t.getFullYear() * 365) + ((t.getMonth() + 1) * 31) + t.getDate() + salt;
+            return Math.abs(baseHash) % predictions.length;
+        }
+
+        function showHoroscope(id, name, icon) {
+            const idx = getPredictionIndex(id);
+            document.getElementById('modalIcon').innerText = icon;
+            document.getElementById('modalTitle').innerText = name;
+            document.getElementById('modalPrediction').innerText = predictions[idx];
+            document.getElementById('predictionModal').classList.add('active');
+        }
+
