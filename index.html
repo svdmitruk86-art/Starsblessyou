@@ -40,7 +40,7 @@
             border-radius: 16px; padding: 20px; text-align: center; cursor: pointer;
             transition: all 0.2s ease; color: var(--text-color); font-size: 1rem;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            outline: none; width: 100%; -webkit-appearance: none;
+            outline: none; width: 100%;
         }
         .zodiac-card:active { background: var(--card-hover); transform: scale(0.97); }
         .zodiac-icon { font-size: 2.5rem; margin-bottom: 10px; display: block; pointer-events: none; }
@@ -82,41 +82,42 @@
     <h1>Звёздный Оракул</h1>
     <p class="subtitle">Выберите ваш знак зодиака, чтобы узнать предсказание</p>
 
+    <!-- Из HTML полностью убран весь JS-мусор (onclick, ontouchstart) -->
     <div class="zodiac-grid">
-        <button type="button" class="zodiac-card" onclick="showHoroscope('aries', 'Овен', '♈')" ontouchstart="showHoroscope('aries', 'Овен', '♈')">
+        <button type="button" class="zodiac-card" data-sign="aries" data-name="Овен" data-icon="♈">
             <span class="zodiac-icon">♈</span><span class="zodiac-name">Овен</span>
         </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('taurus', 'Телец', '♉')" ontouchstart="showHoroscope('taurus', 'Телец', '♉')">
+        <button type="button" class="zodiac-card" data-sign="taurus" data-name="Телец" data-icon="♉">
             <span class="zodiac-icon">♉</span><span class="zodiac-name">Телец</span>
         </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('gemini', 'Близнецы', '♊')" ontouchstart="showHoroscope('gemini', 'Близнецы', '♊')">
+        <button type="button" class="zodiac-card" data-sign="gemini" data-name="Близнецы" data-icon="♊">
             <span class="zodiac-icon">♊</span><span class="zodiac-name">Близнецы</span>
         </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('cancer', 'Рак', '♋')" ontouchstart="showHoroscope('cancer', 'Рак', '♋')">
+        <button type="button" class="zodiac-card" data-sign="cancer" data-name="Рак" data-icon="♋">
             <span class="zodiac-icon">♋</span><span class="zodiac-name">Рак</span>
         </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('leo', 'Лев', '♌')" ontouchstart="showHoroscope('leo', 'Лев', '♌')">
+        <button type="button" class="zodiac-card" data-sign="leo" data-name="Лев" data-icon="♌">
             <span class="zodiac-icon">♌</span><span class="zodiac-name">Лев</span>
         </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('virgo', 'Дева', '♍')" ontouchstart="showHoroscope('virgo', 'Дева', '♍')">
+        <button type="button" class="zodiac-card" data-sign="virgo" data-name="Дева" data-icon="♍">
             <span class="zodiac-icon">♍</span><span class="zodiac-name">Дева</span>
         </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('libra', 'Весы', '♎')" ontouchstart="showHoroscope('libra', 'Весы', '♎')">
+        <button type="button" class="zodiac-card" data-sign="libra" data-name="Весы" data-icon="♎">
             <span class="zodiac-icon">♎</span><span class="zodiac-name">Весы</span>
         </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('scorpio', 'Скорпион', '♏')" ontouchstart="showHoroscope('scorpio', 'Скорпион', '♏')">
+        <button type="button" class="zodiac-card" data-sign="scorpio" data-name="Скорпион" data-icon="♏">
             <span class="zodiac-icon">♏</span><span class="zodiac-name">Скорпион</span>
         </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('sagittarius', 'Стрелец', '♐')" ontouchstart="showHoroscope('sagittarius', 'Стрелец', '♐')">
+        <button type="button" class="zodiac-card" data-sign="sagittarius" data-name="Стрелец" data-icon="♐">
             <span class="zodiac-icon">♐</span><span class="zodiac-name">Стрелец</span>
         </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('capricorn', 'Козерог', '♑')" ontouchstart="showHoroscope('capricorn', 'Козерог', '♑')">
+        <button type="button" class="zodiac-card" data-sign="capricorn" data-name="Козерог" data-icon="♑">
             <span class="zodiac-icon">♑</span><span class="zodiac-name">Козерог</span>
         </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('aquarius', 'Водолей', '♒')" ontouchstart="showHoroscope('aquarius', 'Водолей', '♒')">
+        <button type="button" class="zodiac-card" data-sign="aquarius" data-name="Водолей" data-icon="♒">
             <span class="zodiac-icon">♒</span><span class="zodiac-name">Водолей</span>
         </button>
-        <button type="button" class="zodiac-card" onclick="showHoroscope('pisces', 'Рыбы', '♓')" ontouchstart="showHoroscope('pisces', 'Рыбы', '♓')">
+        <button type="button" class="zodiac-card" data-sign="pisces" data-name="Рыбы" data-icon="♓">
             <span class="zodiac-icon">♓</span><span class="zodiac-name">Рыбы</span>
         </button>
     </div>
@@ -135,6 +136,7 @@
     </div>
 
     <script>
+        // Чистый, строго изолированный массив предсказаний (ровно 31 пункт)
         var predictions = [
             "1. День идеален для важного шага. Ошибок не будет.",
             "2. Энергия дня требует тишины и покоя. Отдохните.",
@@ -164,3 +166,15 @@
             "26. Ожидайте искренний комплимент от незнакомца.",
             "27. День принесет баланс. Все тревоги отступят.",
             "28. Прошлое напомнит о себе. Шанс исправить ошибку.",
+            "29. Проведите вечер дома в атмосфере уюта.",
+            "30. Ваше упорство наконец даст первые крупные плоды.",
+            "31. Говорите «нет» без стыда. Защищайте свои границы."
+        ];
+
+        // Математически безопасная функция вычисления индекса дня
+        function getPredictionIndex(signId) {
+            var dateObj = new Date();
+            var saltNumber = 0;
+            for (var i = 0; i < signId.length; i++) { 
+                saltNumber += signId.charCodeAt(i); 
+            }
