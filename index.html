@@ -38,26 +38,27 @@
         .zodiac-card {
             background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px; padding: 20px; text-align: center; cursor: pointer;
-            transition: all 0.2s ease; color: var(--text-color); font-size: 1rem;
+            transition: transform 0.1s ease, background 0.1s ease; color: var(--text-color); font-size: 1rem;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             outline: none; width: 100%;
         }
-        .zodiac-card:active { background: var(--card-hover); transform: scale(0.97); }
+        .zodiac-card:active { background: var(--card-hover); transform: scale(0.95); }
         .zodiac-icon { font-size: 2.5rem; margin-bottom: 10px; display: block; pointer-events: none; }
         .zodiac-name { font-weight: 600; display: block; pointer-events: none; }
+        
+        /* Модальное окно скрыто по умолчанию через display: none */
         .modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(5, 5, 15, 0.85); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 1000; padding: 20px;
+            background: rgba(5, 5, 15, 0.95);
+            display: none;
+            align-items: center; justify-content: center;
+            z-index: 1000; padding: 20px;
         }
-        .modal.active { opacity: 1; pointer-events: auto; }
         .modal-content {
             background: #161630; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 24px;
             padding: 30px; max-width: 500px; width: 100%; text-align: center;
-            transform: scale(0.9); transition: transform 0.3s ease; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
-        .modal.active .modal-content { transform: scale(1); }
         .modal-icon { font-size: 3.5rem; margin-bottom: 15px; }
         .modal-title { font-size: 1.8rem; margin-bottom: 15px; color: var(--accent-color); }
         .modal-prediction { font-size: 1.1rem; line-height: 1.6; opacity: 0.9; margin-bottom: 25px; }
@@ -67,8 +68,8 @@
         }
         .footer-panel {
             position: fixed; bottom: 0; left: 0; width: 100%; padding: 15px;
-            background: rgba(11, 11, 30, 0.9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: center; z-index: 900;
+            background: rgba(11, 11, 30, 0.95); border-top: 1px solid rgba(255, 255, 255, 0.1); 
+            display: flex; justify-content: center; z-index: 900;
         }
         .donate-btn {
             background: var(--donate-color); color: #fff; border: none; padding: 12px 24px;
@@ -82,42 +83,42 @@
     <h1>Звёздный Оракул</h1>
     <p class="subtitle">Выберите ваш знак зодиака, чтобы узнать предсказание</p>
 
-    <!-- Из HTML полностью убран весь JS-мусор (onclick, ontouchstart) -->
+    <!-- Прямой вызов функции при клике, без посредников в JS -->
     <div class="zodiac-grid">
-        <button type="button" class="zodiac-card" data-sign="aries" data-name="Овен" data-icon="♈">
+        <button type="button" class="zodiac-card" onclick="showHoroscope('aries', 'Овен', '♈')">
             <span class="zodiac-icon">♈</span><span class="zodiac-name">Овен</span>
         </button>
-        <button type="button" class="zodiac-card" data-sign="taurus" data-name="Телец" data-icon="♉">
+        <button type="button" class="zodiac-card" onclick="showHoroscope('taurus', 'Телец', '♉')">
             <span class="zodiac-icon">♉</span><span class="zodiac-name">Телец</span>
         </button>
-        <button type="button" class="zodiac-card" data-sign="gemini" data-name="Близнецы" data-icon="♊">
+        <button type="button" class="zodiac-card" onclick="showHoroscope('gemini', 'Близнецы', '♊')">
             <span class="zodiac-icon">♊</span><span class="zodiac-name">Близнецы</span>
         </button>
-        <button type="button" class="zodiac-card" data-sign="cancer" data-name="Рак" data-icon="♋">
+        <button type="button" class="zodiac-card" onclick="showHoroscope('cancer', 'Рак', '♋')">
             <span class="zodiac-icon">♋</span><span class="zodiac-name">Рак</span>
         </button>
-        <button type="button" class="zodiac-card" data-sign="leo" data-name="Лев" data-icon="♌">
+        <button type="button" class="zodiac-card" onclick="showHoroscope('leo', 'Лев', '♌')">
             <span class="zodiac-icon">♌</span><span class="zodiac-name">Лев</span>
         </button>
-        <button type="button" class="zodiac-card" data-sign="virgo" data-name="Дева" data-icon="♍">
+        <button type="button" class="zodiac-card" onclick="showHoroscope('virgo', 'Дева', '♍')">
             <span class="zodiac-icon">♍</span><span class="zodiac-name">Дева</span>
         </button>
-        <button type="button" class="zodiac-card" data-sign="libra" data-name="Весы" data-icon="♎">
+        <button type="button" class="zodiac-card" onclick="showHoroscope('libra', 'Весы', '♎')">
             <span class="zodiac-icon">♎</span><span class="zodiac-name">Весы</span>
         </button>
-        <button type="button" class="zodiac-card" data-sign="scorpio" data-name="Скорпион" data-icon="♏">
+        <button type="button" class="zodiac-card" onclick="showHoroscope('scorpio', 'Скорпион', '♏')">
             <span class="zodiac-icon">♏</span><span class="zodiac-name">Скорпион</span>
         </button>
-        <button type="button" class="zodiac-card" data-sign="sagittarius" data-name="Стрелец" data-icon="♐">
+        <button type="button" class="zodiac-card" onclick="showHoroscope('sagittarius', 'Стрелец', '♐')">
             <span class="zodiac-icon">♐</span><span class="zodiac-name">Стрелец</span>
         </button>
-        <button type="button" class="zodiac-card" data-sign="capricorn" data-name="Козерог" data-icon="♑">
+        <button type="button" class="zodiac-card" onclick="showHoroscope('capricorn', 'Козерог', '♑')">
             <span class="zodiac-icon">♑</span><span class="zodiac-name">Козерог</span>
         </button>
-        <button type="button" class="zodiac-card" data-sign="aquarius" data-name="Водолей" data-icon="♒">
+        <button type="button" class="zodiac-card" onclick="showHoroscope('aquarius', 'Водолей', '♒')">
             <span class="zodiac-icon">♒</span><span class="zodiac-name">Водолей</span>
         </button>
-        <button type="button" class="zodiac-card" data-sign="pisces" data-name="Рыбы" data-icon="♓">
+        <button type="button" class="zodiac-card" onclick="showHoroscope('pisces', 'Рыбы', '♓')">
             <span class="zodiac-icon">♓</span><span class="zodiac-name">Рыбы</span>
         </button>
     </div>
@@ -127,7 +128,7 @@
             <div class="modal-icon" id="modalIcon"></div>
             <div class="modal-title" id="modalTitle"></div>
             <div class="modal-prediction" id="modalPrediction"></div>
-            <button type="button" class="close-btn" id="closeBtn">Принять совет звёзд</button>
+            <button type="button" class="close-btn" onclick="closeModalWindow()">Принять совет звёзд</button>
         </div>
     </div>
 
@@ -136,7 +137,6 @@
     </div>
 
     <script>
-        // Чистый, строго изолированный массив предсказаний (ровно 31 пункт)
         var predictions = [
             "1. День идеален для важного шага. Ошибок не будет.",
             "2. Энергия дня требует тишины и покоя. Отдохните.",
@@ -149,7 +149,7 @@
             "9. Кто-то тайно ищет вашего внимания. Оглянитесь.",
             "10. Удача в переговорах. Все сложится в вашу пользу.",
             "11. День творчества. Запишите все новые задумки.",
-            "12. Фокусируйтесь на главном. Мелочи решатся сами.",
+            "12. Фокусируйтесь на главном. Мелкие неурядицы рассеются сами.",
             "13. Ваше обаяние на пике. Открываются новые двери.",
             "14. Осторожнее с обещаниями, берегите личную энергию.",
             "15. Обращайте внимание на знаки и мелкие совпадения.",
@@ -171,10 +171,16 @@
             "31. Говорите «нет» без стыда. Защищайте свои границы."
         ];
 
-        // Математически безопасная функция вычисления индекса дня
         function getPredictionIndex(signId) {
-            var dateObj = new Date();
-            var saltNumber = 0;
-            for (var i = 0; i < signId.length; i++) { 
-                saltNumber += signId.charCodeAt(i); 
-            }
+            var d = new Date();
+            var s = 0;
+            for (var i = 0; i < signId.length; i++) { s += signId.charCodeAt(i); }
+            var hash = (d.getFullYear() * 365) + ((d.getMonth() + 1) * 31) + d.getDate() + s;
+            return Math.abs(hash) % predictions.length;
+        }
+
+        // Прямое управление отображением без CSS классов
+        function showHoroscope(id, name, icon) {
+            var idx = getPredictionIndex(id);
+            document.getElementById('modalIcon').innerText = icon;
+            document.getElementById('modalTitle').innerText = name;
